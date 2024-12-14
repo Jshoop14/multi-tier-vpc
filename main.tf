@@ -14,8 +14,9 @@ provider "aws" {
 module "vpc" {
   source   = "./modules/vpc"
   vpc_cidr = var.vpc_cidr
-  vpc_name = "MultiTierVPC"
+  vpc_name = var.vpc_name
 }
+
 
 module "subnets" {
   source            = "./modules/subnets"
@@ -26,7 +27,6 @@ module "subnets" {
   public_name       = "PublicSubnet"
   private_name      = "PrivateSubnet"
 }
-
 
 module "internet_gateway" {
   source   = "./modules/internet_gateway"
