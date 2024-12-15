@@ -53,4 +53,24 @@ variable "web_sg_name" {
   type        = string
 }
 
+variable "bastion_ami" {
+  description = "AMI for the bastion host"
+  type        = string
+}
+
+variable "instance_type" {
+  description = "Instance type for the bastion host"
+  type        = string
+}
+
+variable "key_name" {
+  description = "Name of the SSH key pair to access the bastion host"
+  type        = string
+}
+
+variable "allowed_ssh_ips" {
+  description = "List of trusted IPs allowed to SSH into the bastion host"
+  type        = list(string)
+}
+
 

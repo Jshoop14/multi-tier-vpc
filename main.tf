@@ -48,4 +48,16 @@ module "security_groups" {
   web_sg_name = var.web_sg_name
 }
 
+module "bastion_host" {
+  source           = "./modules/bastion_host"
+  bastion_ami      = var.bastion_ami
+  instance_type    = var.instance_type
+  public_subnet_id = module.subnets.public_subnet_id
+  key_name         = var.key_name
+  bastion_name     = "BastionHost"
+  bastion_sg_name  = "BastionSecurityGroup"
+  vpc_id           = module.vpc.vpc_id
+  allowed_ssh_ips  = var.allowed_ssh_ips
+}
+
 
