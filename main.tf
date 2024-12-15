@@ -60,4 +60,15 @@ module "bastion_host" {
   allowed_ssh_ips  = var.allowed_ssh_ips
 }
 
+module "web_servers" {
+  source           = "./modules/web_server"
+  web_server_ami   = var.web_server_ami
+  instance_type    = var.instance_type
+  public_subnet_id = module.subnets.public_subnet_id
+  security_group_id = module.security_groups.web_sg_id
+  key_name         = var.key_name
+  instance_count   = 2
+}
+
+
 
