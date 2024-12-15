@@ -41,3 +41,11 @@ module "route_table" {
   public_subnet_id = module.subnets.public_subnet_id
   route_table_name = "PublicRouteTable"
 }
+
+module "security_groups" {
+  source      = "./modules/security_groups"
+  vpc_id      = module.vpc.vpc_id
+  web_sg_name = var.web_sg_name
+}
+
+

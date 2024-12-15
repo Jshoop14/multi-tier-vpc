@@ -48,3 +48,9 @@ variable "route_table_name" {
   type        = string
 }
 
+variable "web_sg_name" {
+  description = "Name of the web server security group"
+  type        = string
+}
+
+
