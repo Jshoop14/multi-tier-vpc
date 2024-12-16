@@ -19,13 +19,13 @@ module "vpc" {
 
 
 module "subnets" {
-  source            = "./modules/subnets"
-  vpc_id            = module.vpc.vpc_id
-  public_cidr       = var.public_subnet_cidr
-  private_cidr      = var.private_subnet_cidr
-  availability_zone = var.availability_zone
-  public_name       = "PublicSubnet"
-  private_name      = "PrivateSubnet"
+  source             = "./modules/subnets"
+  vpc_id             = module.vpc.vpc_id
+  public_cidr        = var.public_subnet_cidr
+  private_cidr       = var.private_subnet_cidr
+  availability_zones = var.availability_zones
+  public_name        = "PublicSubnet"
+  private_name       = "PrivateSubnet"
 }
 
 module "internet_gateway" {
@@ -38,7 +38,7 @@ module "route_table" {
   source           = "./modules/route_table"
   vpc_id           = module.vpc.vpc_id
   gateway_id       = module.internet_gateway.gateway_id
-  public_subnet_id = module.subnets.public_subnet_id
+  public_subnet_id = module.subnets.public_subnet_ids[0]
   route_table_name = "PublicRouteTable"
 }
 
@@ -52,7 +52,7 @@ module "bastion_host" {
   source           = "./modules/bastion_host"
   bastion_ami      = var.bastion_ami
   instance_type    = var.instance_type
-  public_subnet_id = module.subnets.public_subnet_id
+  public_subnet_id = module.subnets.public_subnet_ids[0]
   key_name         = var.key_name
   bastion_name     = "BastionHost"
   bastion_sg_name  = "BastionSecurityGroup"
@@ -61,14 +61,21 @@ module "bastion_host" {
 }
 
 module "web_servers" {
-  source           = "./modules/web_server"
-  web_server_ami   = var.web_server_ami
-  instance_type    = var.instance_type
-  public_subnet_id = module.subnets.public_subnet_id
+  source            = "./modules/web_server"
+  web_server_ami    = var.web_server_ami
+  instance_type     = var.instance_type
+  public_subnet_id  = module.subnets.public_subnet_ids[0]
   security_group_id = module.security_groups.web_sg_id
-  key_name         = var.key_name
-  instance_count   = 2
+  key_name          = var.key_name
+  instance_count    = 2
 }
 
-
+module "alb" {
+  source            = "./modules/alb"
+  alb_name          = var.alb_name
+  vpc_id            = module.vpc.vpc_id
+  subnets           = module.subnets.public_subnet_ids
+  target_group_name = var.target_group_name
+  alb_sg_id         = module.security_groups.web_sg_id
+}
 

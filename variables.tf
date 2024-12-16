@@ -18,10 +18,11 @@ variable "private_subnet_cidr" {
   type        = string
 }
 
-variable "availability_zone" {
-  description = "Availability zone for the subnets"
-  type        = string
+variable "availability_zones" {
+  description = "List of availability zones for the subnets"
+  type        = list(string)
 }
+
 
 variable "vpc_name" {
   description = "Name tag for the VPC"
@@ -76,6 +77,18 @@ variable "allowed_ssh_ips" {
 variable "web_server_ami" {
   description = "AMI ID for the web servers"
   type        = string
+}
+
+variable "alb_name" {
+  description = "Name of the Application Load Balancer"
+  type        = string
+  default     = "MultiTierALB"
+}
+
+variable "target_group_name" {
+  description = "Name of the Target Group for web servers"
+  type        = string
+  default     = "WebServerTargetGroup"
 }
 
 
