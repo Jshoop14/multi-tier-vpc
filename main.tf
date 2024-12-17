@@ -79,3 +79,19 @@ module "alb" {
   alb_sg_id         = module.security_groups.web_sg_id
 }
 
+module "asg" {
+  source            = "./modules/asg"
+  asg_name          = "WebServerASG" # Provide a value for ASG name
+  web_server_ami    = var.web_server_ami
+  instance_type     = var.instance_type
+  key_name          = var.key_name
+  security_group_id = module.security_groups.web_sg_id
+  subnet_ids        = module.subnets.public_subnet_ids
+  max_size          = 3
+  min_size          = 1
+  desired_capacity  = 2
+}
+
+
+
+
