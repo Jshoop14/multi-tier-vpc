@@ -106,5 +106,37 @@ variable "desired_capacity" {
   type        = number
 }
 
+variable "sns_topic_arn" {
+  description = "ARN for the SNS topic to send CloudWatch alarms"
+  type        = string
+}
+
+variable "cpu_alarm_name" {
+  description = "Name for the CloudWatch CPU alarm"
+  type        = string
+}
+
+variable "cpu_threshold" {
+  description = "Threshold percentage for CPU utilization"
+  type        = number
+}
+
+variable "alb_log_bucket_name" {
+  description = "Name of the S3 bucket to store ALB access logs"
+  type        = string
+}
+
+variable "alarm_action_arn" {
+  description = "ARN of the SNS topic for alarm actions"
+  type        = string
+}
+
+variable "asg_name" {
+  description = "Name of the Auto Scaling Group to monitor"
+  type        = string
+}
+
+
+
 
 
