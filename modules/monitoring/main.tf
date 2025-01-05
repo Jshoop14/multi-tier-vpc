@@ -1,7 +1,3 @@
-data "aws_lb" "existing_alb" {
-  name = "MultiTierALB"
-}
-
 resource "aws_cloudwatch_metric_alarm" "cpu_alarm" {
   alarm_name          = var.cpu_alarm_name
   comparison_operator = "GreaterThanThreshold"
@@ -27,5 +23,7 @@ resource "aws_s3_bucket" "alb_logs" {
     Name = var.alb_log_bucket_name
   }
 }
+
+
 
 
