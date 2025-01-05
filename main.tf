@@ -7,16 +7,16 @@ terraform {
   }
 }
 
-terraform {
-  backend "remote" {
-    hostname     = "app.terraform.io"
-    organization = "Jeremys-Environment"
+#terraform {
+  #backend "remote" {
+    #hostname     = "app.terraform.io"
+    #organization = "Jeremys-Environment"
 
-    workspaces {
-      name = "multi-tier-vpc"
-    }
-  }
-}
+    #workspaces {
+      #name = "multi-tier-vpc"
+    #}
+  #}
+#}
 
 provider "aws" {
   region = var.region
