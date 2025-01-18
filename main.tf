@@ -19,7 +19,7 @@ terraform {
 }
 
 provider "aws" {
-  region = var.region
+  region     = var.region
 }
 
 module "vpc" {
@@ -103,17 +103,18 @@ module "asg" {
   desired_capacity  = 2
 }
 
-module "monitoring" {
-  source              = "./modules/monitoring"
-  cpu_alarm_name      = var.cpu_alarm_name
-  cpu_threshold       = var.cpu_threshold
-  sns_topic_arn       = var.sns_topic_arn
-  alb_log_bucket_name = var.alb_log_bucket_name
-  alb_name            = var.alb_name
-  alb_sg_id           = module.security_groups.web_sg_id
-  subnet_ids          = module.subnets.public_subnet_ids
-  asg_name            = var.asg_name
-}
+#module "monitoring" {
+  #source              = "./modules/monitoring"
+  #cpu_alarm_name      = var.cpu_alarm_name
+  #cpu_threshold       = var.cpu_threshold
+  #sns_topic_arn       = var.sns_topic_arn
+  #alb_log_bucket_name = var.alb_log_bucket_name
+  #alb_name            = var.alb_name
+  #alb_sg_id           = module.security_groups.web_sg_id
+  #subnet_ids          = module.subnets.public_subnet_ids
+  #asg_name            = var.asg_name
+  #alarm_action_arn    = var.alarm_action_arn
+#}
 
 
 
