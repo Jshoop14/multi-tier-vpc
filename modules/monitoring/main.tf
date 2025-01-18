@@ -11,8 +11,9 @@ resource "aws_cloudwatch_metric_alarm" "cpu_alarm" {
     AutoScalingGroupName = var.asg_name
   }
   actions_enabled = true
-  alarm_actions   = [var.sns_topic_arn]
+  alarm_actions   = [var.sns_topic_arn, var.alarm_action_arn]
 }
+
 
 resource "aws_s3_bucket" "alb_logs" {
   bucket = var.alb_log_bucket_name
