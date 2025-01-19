@@ -50,6 +50,19 @@ alb_log_bucket_name = "multi-tier-alb-logs"
 alarm_action_arn    = "arn:aws:sns:us-east-1:730335574748:WebServerAlerts"
 asg_name            = "WebServerASG"
 
+# Database Configuration
+db_instance_name    = "MultiTierDB"
+db_name             = "mydb"
+username            = "admin"
+password            = "supersecurepassword123"
+engine              = "mysql"
+engine_version      = "8.0"
+instance_class      = "db.t3.micro"
+allocated_storage   = 20
+max_allocated_storage = 100
+parameter_group_name = "default.mysql8.0"
+subnet_group_name   = "DBSubnetGroup"
+
 
 
 

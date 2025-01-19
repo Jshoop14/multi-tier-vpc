@@ -103,6 +103,24 @@ module "asg" {
   desired_capacity  = 2
 }
 
+module "database" {
+  source             = "./modules/database"
+  db_instance_name   = var.db_instance_name
+  db_name            = var.db_name
+  username           = var.username
+  password           = var.password
+  engine             = var.engine
+  engine_version     = var.engine_version
+  instance_class     = var.instance_class
+  allocated_storage  = var.allocated_storage
+  max_allocated_storage = var.max_allocated_storage
+  parameter_group_name = var.parameter_group_name
+  subnet_group_name  = var.subnet_group_name
+  private_subnet_ids = module.subnets.private_subnet_ids
+  db_sg_id           = module.security_groups.db_sg_id
+}
+
+
 #module "monitoring" {
   #source              = "./modules/monitoring"
   #cpu_alarm_name      = var.cpu_alarm_name
