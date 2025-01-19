@@ -45,9 +45,9 @@ desired_capacity = 2
 # Monitoring Configuration
 cpu_alarm_name      = "WebServerCPUAlarm"
 cpu_threshold       = 75
-sns_topic_arn       = "arn:aws:sns:us-east-1:123456789012:my-sns-topic"
+sns_topic_arn       = "arn:aws:sns:us-east-1:730335574748:WebServerAlerts"
 alb_log_bucket_name = "multi-tier-alb-logs"
-alarm_action_arn    = "arn:aws:sns:us-east-1:123456789012:my-sns-topic"
+alarm_action_arn    = "arn:aws:sns:us-east-1:730335574748:WebServerAlerts"
 asg_name            = "WebServerASG"
 
 
