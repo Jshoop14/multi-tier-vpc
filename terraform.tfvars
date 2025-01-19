@@ -30,7 +30,7 @@ instance_type   = "t2.micro"
 key_name        = "bastion"
 allowed_ssh_ips = ["203.0.113.0/24"] # Replace with your trusted IP range
 
-#Web Servwer
+#Web Server
 web_server_ami = "ami-0453ec754f44f9a4a"
 
 # ALB Configuration
@@ -51,18 +51,18 @@ alarm_action_arn    = "arn:aws:sns:us-east-1:730335574748:WebServerAlerts"
 asg_name            = "WebServerASG"
 
 # Database Configuration
-db_instance_name      = "MultiTierDB"
-db_name               = "mydb"
-username              = "admin"
-password              = "supersecurepassword123"
-engine                = "mysql"
-engine_version        = "8.0"
-instance_class        = "db.t3.micro"
-allocated_storage     = 20
-max_allocated_storage = 100
-parameter_group_name  = "default.mysql8.0"
-subnet_group_name     = "DBSubnetGroup"
-db_sg_name            = "DatabaseSecurityGroup"
+#db_instance_name      = "MultiTierDB"
+#db_name               = "mydb"
+#username              = "admin"
+#password              = "supersecurepassword123"
+#engine                = "mysql"
+#engine_version        = "8.0"
+#instance_class        = "db.t3.micro"
+#allocated_storage     = 20
+#max_allocated_storage = 100
+#parameter_group_name  = "default.mysql8.0"
+#subnet_group_name     = "DBSubnetGroup"
+#db_sg_name            = "DatabaseSecurityGroup"
 
 
 
