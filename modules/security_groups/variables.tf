@@ -8,3 +8,9 @@ variable "vpc_id" {
   type        = string
 }
 
+variable "db_sg_name" {
+  description = "Name of the database security group"
+  type        = string
+}
+
+

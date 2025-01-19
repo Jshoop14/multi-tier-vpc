@@ -57,6 +57,7 @@ module "security_groups" {
   source      = "./modules/security_groups"
   vpc_id      = module.vpc.vpc_id
   web_sg_name = var.web_sg_name
+  db_sg_name  = var.db_sg_name
 }
 
 module "bastion_host" {
